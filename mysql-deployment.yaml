@@ -12,7 +12,8 @@ data:
 
     GRANT ALL PRIVILEGES ON petclinic.* TO 'petclinic'@'%' IDENTIFIED BY 'petclinic'; 
 
-  schema.sql: |
+    USE petclinic; 
+
     CREATE TABLE IF NOT EXISTS vets (
       id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
       first_name VARCHAR(30),
@@ -69,7 +70,6 @@ data:
       FOREIGN KEY (pet_id) REFERENCES pets(id)
     ) engine=InnoDB;
 
-  data.sql: |
     INSERT IGNORE INTO vets VALUES (1, 'James', 'Carter');
     INSERT IGNORE INTO vets VALUES (2, 'Helen', 'Leary');
     INSERT IGNORE INTO vets VALUES (3, 'Linda', 'Douglas');
