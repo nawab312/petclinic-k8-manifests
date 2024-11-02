@@ -161,7 +161,7 @@ spec:
                   name: mysql-secret
                   key: MYSQL_ROOT_PASSWORD
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
-              value: true
+              value: "true"
           ports:
             - containerPort: 3306
           volumeMounts:
