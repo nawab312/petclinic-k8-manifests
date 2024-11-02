@@ -22,11 +22,17 @@ spec:
             - name: MYSQL_USER
               value: petclinic
             - name: MYSQL_PASSWORD 
-              value: petclinic
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_PASSWORD
             - name: MYSQL_DATABASE
               value: petclinic
             - name: MYSQL_ROOT_PASSWORD
-              value: password
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_ROOT_PASSWORD
           ports:
             - containerPort: 3306
           volumeMounts:
