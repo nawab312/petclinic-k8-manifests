@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic
+  namespace: petclinic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petclinic
+  template:
+    metadata:
+      labels: 
+        app: petclinic 
+    spec:
+      containers:
+        - name: petclinic
+          image: sid3121997/petclinic-app:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql:3306/petclinic
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root 
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: password
+
+---
+apiVersion: v1 
+kind: Service 
+metadata:
+  name: petclinic
+  namespace: petclinic
+spec: 
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30080
+  selector:
+    app: petclinic
