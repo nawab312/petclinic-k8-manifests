@@ -162,6 +162,13 @@ spec:
                   key: MYSQL_ROOT_PASSWORD
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
               value: "true"
+          resources:
+            requests:
+              cpu: "50m" # Minimal CPU requirement as observed
+              memory: "200Mi" # Just above observed usage
+            limits:
+              cpu: "200m" # Allows for potential CPU usage increases
+              memory: "300Mi" # Provides room for memory spikes
           ports:
             - containerPort: 3306
           volumeMounts:
