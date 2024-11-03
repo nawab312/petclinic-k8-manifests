@@ -25,6 +25,13 @@ spec:
               value: petclinic 
             - name: SPRING_DATASOURCE_PASSWORD
               value: petclinic
+          resources:
+            requests:
+              cpu: "500m" 
+              memory: "300Mi" 
+            limits:
+              cpu: "800m" 
+              memory: "400Mi" 
 
 ---
 apiVersion: v1 
